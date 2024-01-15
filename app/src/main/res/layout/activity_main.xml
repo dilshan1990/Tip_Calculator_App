@@ -1,0 +1,223 @@
+<!-- activity_main.xml -->
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:padding="16dp"
+    tools:context=".MainActivity">
+
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="#756AB6"
+        android:elevation="4dp"
+        android:theme="?attr/actionBarTheme">
+
+        <TextView
+            android:id="@+id/toolbarTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-black"
+            android:gravity="center"
+            android:text="Tip Calculator"
+            android:textColor="#FFFFFF"
+            android:textSize="30sp"
+            android:textStyle="bold" />
+
+    </androidx.appcompat.widget.Toolbar>
+
+    <Button
+        style="@style/buttonStyle"
+        android:id="@+id/ChangeTheme"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="250dp"
+        android:text="Change Theme "
+        android:layout_below="@id/exitButton"
+        android:padding="16dp"/>
+
+
+
+
+
+    <EditText
+        android:id="@+id/billAmountEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/toolbar"
+        android:layout_marginTop="122dp"
+        android:hint="Enter Bill Amount"
+        android:inputType="numberDecimal" />
+
+    <EditText
+        android:id="@+id/customTipEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Custom Tip Percentage"
+        android:inputType="numberDecimal"
+        android:layout_below="@id/tipPercentageMessageTextView"
+        android:layout_marginTop="70dp"
+        android:visibility="gone"/>
+
+    <TextView
+        android:id="@+id/tipPercentageMessageTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/billAmountEditText"
+        android:layout_marginTop="25dp"
+        android:text="Select the Tip Percentage:"
+        android:textStyle="bold"
+        android:textSize="18sp" />
+
+    <RadioGroup
+        android:id="@+id/tipPercentageRadioGroup"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tipPercentageMessageTextView"
+        android:layout_marginTop="9dp"
+        android:orientation="horizontal">
+
+        <RadioButton
+            android:id="@+id/radio5Percent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="5%" />
+
+        <RadioButton
+            android:id="@+id/radio10Percent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="10%" />
+
+        <RadioButton
+            android:id="@+id/radio15Percent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="15%" />
+
+        <RadioButton
+            android:id="@+id/radio20Percent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="20%" />
+
+        <RadioButton
+            android:id="@+id/radioCustom"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Custom" />
+    </RadioGroup>
+
+    <Spinner
+        android:id="@+id/currencySpinner"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_below="@id/toolbar"
+        android:layout_marginEnd="16dp"
+        android:layout_marginTop="8dp"/>
+
+    <TextView
+        android:id="@+id/selectCurrencyTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/toolbar"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="10dp"
+        android:text="Select the Currency" />
+
+    <Switch
+        android:id="@+id/splitBillSwitch"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/roundTipSwitch"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_marginStart="4dp"
+        android:layout_marginLeft="17dp"
+        android:layout_marginTop="25dp"
+        android:text="Split The Bill"
+        android:textSize="18sp"
+        android:textStyle="bold" />
+
+    <EditText
+        android:id="@+id/numberOfPeopleEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/splitBillSwitch"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_marginStart="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="12dp"
+        android:hint="Number of People"
+        android:inputType="number"
+        android:visibility="invisible" />
+
+    <View
+        android:id="@+id/spaceView"
+        android:layout_width="match_parent"
+        android:layout_height="16dp"
+        android:visibility="gone" />
+
+    <Button
+        android:id="@+id/calculateButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/numberOfPeopleEditText"
+        android:layout_marginTop="13dp"
+        android:onClick="calculateTip"
+        android:text="Calculate" />
+
+    <TextView
+        android:id="@+id/tipAmountTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/calculateButton"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="16dp"/>
+
+    <TextView
+        android:id="@+id/totalBillTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="50dp"
+        android:layout_below="@id/tipAmountTextView"
+        android:text=""
+        android:layout_marginTop="8dp"/>
+
+    <TextView
+        android:id="@+id/resultTextView"
+        android:layout_width="59dp"
+        android:layout_height="5dp"
+        android:layout_below="@id/totalBillTextView"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="18dp"
+        android:text=""
+        android:textColor="@android:color/black"
+        android:textSize="18sp" />
+
+    <Button
+        android:id="@+id/exitButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Exit"
+        android:layout_below="@id/calculateButton"
+        android:textColor="@color/black"
+        android:layout_marginTop="16dp"/>
+
+    <Switch
+        android:id="@+id/roundTipSwitch"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tipPercentageMessageTextView"
+        android:layout_marginTop="136dp"
+        android:text="Round Off Tip"
+        android:textSize="18sp"
+        android:textStyle="bold" />
+
+</RelativeLayout>
